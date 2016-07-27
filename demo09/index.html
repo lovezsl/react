@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      var Input = React.createClass({
+        getInitialState: function() {
+          return {value: 'Hello!',value2: 'sdfasd'};
+        },
+        handleChange: function(event) {
+          console.log(event.target);
+          this.setState({value: event.target.value});
+          console.log(this.state.value);
+        },
+        handleNewChange: function(event){
+          var value2 = event.target.value;
+          console.log(value2);
+          this.setState({value2: value2});
+        },
+        render: function () {
+          var value = this.state.value;
+          var value2 = this.state.value2;
+          return (
+            <div>
+              <input type="text" defaultValue="123" onChange={this.handleChange} /><br/>
+              <input type="text" class="sdfasdf" value={value} onChange={this.handleChange} /><br/>
+              <input type="text" value={value2} onChange={this.handleNewChange} />
+              <p>{value}</p>
+            </div>
+          );
+        }
+      });
+
+      ReactDOM.render(<Input/>, document.getElementById('example'));
+    </script>
+  </body>
+</html>

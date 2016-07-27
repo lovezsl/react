@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+var MyComponent = React.createClass({
+  handleClick: function() {
+    this.refs.myTextInput.focus();
+  },
+  handleBlur: function() {
+    console.log('onBlur');
+  },
+  handleFocus: function() {
+    console.log('onFocus');
+  },
+  handleKeyDown: function() {
+    console.log('onKeyDown');
+  },
+  handleCopy: function() {
+    console.log('onCopy');
+  },
+  handleCut: function(){
+    console.log('onCut');
+  },
+  render: function() {
+    return (
+      <div>
+        <div onCopy={this.handleCopy}>copy</div>
+        <input type="text" onCut={this.handleCut} value="cut,cut" /><br/>
+        <input type="text" ref="myTextInput" onBlur={this.handleBlur} onFocus={this.handleFocus} onKeyDown={this.handleKeyDown} />
+        <input type="button" value="Focus the text input" onClick={this.handleClick} />
+      </div>
+    );
+  }
+});
+
+ReactDOM.render(
+  <MyComponent />,
+  document.getElementById('example')
+);
+    </script>
+  </body>
+</html>

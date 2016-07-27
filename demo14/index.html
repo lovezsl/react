@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <script type="text/javascript" src="../build/jquery.min.js"></script>
+
+  </head>
+  <body>
+    <div id="example"></div>
+    <div id="example2"></div>
+    <script type="text/babel">
+    var name = ['yhw','zsl','www'];
+    
+    var HelloMessage = React.createClass({
+      render: function() {
+        return (
+        <div>
+          <ol>
+          {
+            React.Children.map(this.props.children, function (child) {
+              return <li>{child}</li>;
+            })
+          }
+          </ol>
+          <div>
+            {this.props.className}
+          </div>
+          <div>
+            this.props.nameArr.map(function (name) {
+              return <div>Hello, {name}!</div>
+            });
+          </div>
+        </div>   
+        );
+      }
+    });
+
+    ReactDOM.render(
+      <HelloMessage nameArr={name} className="asdfasdfas">
+        <span>hello zsl</span>
+        <span>hello zsl2</span>
+      </HelloMessage>,
+      document.getElementById('example')
+    );
+
+    </script>
+  </body>
+</html>
+
+
